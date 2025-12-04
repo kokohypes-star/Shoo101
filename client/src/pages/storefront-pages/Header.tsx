@@ -75,7 +75,7 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
     <header className="border-b bg-white py-4 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto w-full px-4 flex items-center justify-between">
         <Link href="/storefront">
-          <h1 className="font-bold text-xl cursor-pointer">SHOOBU STORE</h1>
+          <h1 className="font-bold text-xl cursor-pointer animate-gradient-text bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 bg-[length:200%_auto] bg-clip-text text-transparent">SHOOBU</h1>
         </Link>
 
         {/* Desktop Navigation */}

@@ -114,13 +114,18 @@ export default function StorefrontProducts() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 space-y-12">
       {/* Header */}
-      <div className="space-y-4 text-center">
-        <h1 
-          className="font-bold inline-block px-6 bg-gray-100 hover:bg-gray-200 transition-all duration-300 cursor-default hover:shadow-md" 
-          style={{ fontFamily: 'Plus Jakarta Sans', fontSize: '1.500rem', height: '40px', lineHeight: '40px', borderRadius: '4px' }}
+      <div className="-mx-4 md:-mx-[calc((100vw-80rem)/2+1rem)]">
+        <div 
+          className="w-full flex items-center justify-center bg-gray-100 hover:bg-purple-600 hover:text-white transition-all duration-300 cursor-default" 
+          style={{ height: '140px' }}
         >
-          Shop Our Store
-        </h1>
+          <h1 
+            className="font-bold" 
+            style={{ fontFamily: 'Plus Jakarta Sans', fontSize: '1.500rem' }}
+          >
+            Shop Our Store
+          </h1>
+        </div>
       </div>
 
       {/* Filters Section */}
