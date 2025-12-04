@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Switch, Route, Link, useLocation } from 'wouter';
+import { Switch, Route, Link, useLocation, useRoute } from 'wouter';
 import { Home, ShoppingBag, ShoppingCart, User, LogIn } from 'lucide-react';
 import StorefrontHome from './storefront-pages/Home';
 import StorefrontProducts from './storefront-pages/Products';
@@ -52,6 +52,7 @@ function MobileNav({ isLoggedIn }: { isLoggedIn: boolean }) {
 }
 
 export default function Storefront() {
+  const [location] = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [customer, setCustomer] = useState<any>(null);
   const [cartCount, setCartCount] = useState<number>(0);
@@ -122,7 +123,7 @@ export default function Storefront() {
             <Route component={() => <StorefrontHome />} />
           </Switch>
         </main>
-        <StorefrontFooter />
+        {(location === '/storefront/account' || location === '/account') && <StorefrontFooter />}
         <MobileNav isLoggedIn={isLoggedIn} />
       </div>
     </CurrencyProvider>

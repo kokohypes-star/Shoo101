@@ -423,6 +423,19 @@ export default function StorefrontHome() {
             );
           })}
           </div>
+          
+          {/* Shop More Button */}
+          <div className="flex justify-center pt-6">
+            <Button 
+              size="lg" 
+              className="gap-2 px-8"
+              onClick={() => window.location.href = '/storefront/products'}
+              data-testid="button-shop-more"
+            >
+              Shop More
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -456,8 +469,8 @@ export default function StorefrontHome() {
       <section className="grid grid-cols-3 gap-2 md:gap-6">
         <Card className="p-3 md:p-8 border-0 shadow-sm hover:shadow-md transition">
           <div className="flex flex-col items-center text-center md:items-start md:text-left space-y-2 md:space-y-4">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-purple-100 flex items-center justify-center">
-              <Truck className="h-5 w-5 md:h-6 md:w-6 text-purple-600" />
+            <div className="w-full md:w-12 aspect-square md:aspect-auto md:h-12 rounded-lg bg-purple-100 flex items-center justify-center">
+              <Truck className="h-8 w-8 md:h-6 md:w-6 text-purple-600" />
             </div>
             <h3 className="text-xs md:text-lg font-bold leading-tight" style={{ fontFamily: 'Plus Jakarta Sans' }}>Express Shipping</h3>
             <p className="hidden md:block text-sm text-muted-foreground leading-relaxed">
@@ -467,8 +480,8 @@ export default function StorefrontHome() {
         </Card>
         <Card className="p-3 md:p-8 border-0 shadow-sm hover:shadow-md transition">
           <div className="flex flex-col items-center text-center md:items-start md:text-left space-y-2 md:space-y-4">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-blue-100 flex items-center justify-center">
-              <Shield className="h-5 w-5 md:h-6 md:w-6 text-blue-600" />
+            <div className="w-full md:w-12 aspect-square md:aspect-auto md:h-12 rounded-lg bg-blue-100 flex items-center justify-center">
+              <Shield className="h-8 w-8 md:h-6 md:w-6 text-blue-600" />
             </div>
             <h3 className="text-xs md:text-lg font-bold leading-tight" style={{ fontFamily: 'Plus Jakarta Sans' }}>Secure Payment</h3>
             <p className="hidden md:block text-sm text-muted-foreground leading-relaxed">
@@ -478,8 +491,8 @@ export default function StorefrontHome() {
         </Card>
         <Card className="p-3 md:p-8 border-0 shadow-sm hover:shadow-md transition">
           <div className="flex flex-col items-center text-center md:items-start md:text-left space-y-2 md:space-y-4">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-green-100 flex items-center justify-center">
-              <ShoppingBag className="h-5 w-5 md:h-6 md:w-6 text-green-600" />
+            <div className="w-full md:w-12 aspect-square md:aspect-auto md:h-12 rounded-lg bg-green-100 flex items-center justify-center">
+              <ShoppingBag className="h-8 w-8 md:h-6 md:w-6 text-green-600" />
             </div>
             <h3 className="text-xs md:text-lg font-bold leading-tight" style={{ fontFamily: 'Plus Jakarta Sans' }}>Easy Returns</h3>
             <p className="hidden md:block text-sm text-muted-foreground leading-relaxed">

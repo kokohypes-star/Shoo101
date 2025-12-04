@@ -60,6 +60,9 @@ shared/
 - Run command: Production server configuration
 
 ## Recent Changes
+- December 04, 2025: Footer copyright now only visible on Account page
+- December 04, 2025: Added "Shop More" button below Featured Products section
+- December 04, 2025: Increased feature icons on mobile to match label width
 - December 04, 2025: Enhanced header styling with mobile/desktop responsive sizing
 - December 04, 2025: Added mobile dropdown search with slide animation
 - December 04, 2025: Upgraded Account page with profile picture upload and edit functionality
