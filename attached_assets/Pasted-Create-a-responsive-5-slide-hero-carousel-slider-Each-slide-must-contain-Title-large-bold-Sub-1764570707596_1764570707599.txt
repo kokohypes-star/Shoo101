@@ -1,0 +1,198 @@
+Create a responsive 5-slide hero carousel slider. Each slide must contain:
+
+Title (large, bold)
+
+Subtitle (medium, slightly faded)
+
+Description paragraph
+
+“Shop Now” button with animation
+
+Full background image with a dark overlay
+
+Left-aligned content, vertically centered
+
+
+The slider must use TailwindCSS + vanilla JavaScript only.
+
+
+---
+
+Layout Requirements
+
+Full-width hero section
+
+Height: 430px on desktop, auto on mobile
+
+Each slide occupies full width, 100% height
+
+All slides displayed in a horizontal flex track
+
+Content wrapper uses:
+
+absolute, inset-0, flex, flex-col, justify-center, px-10
+
+Text must be white
+
+Background overlay must be semi-transparent black
+
+
+
+
+---
+
+Animation Styles
+
+Apply a mixed animation style to every slide:
+
+1. Fade-in-up (title, subtitle, description)
+
+Duration: 0.9s
+
+Starts at opacity 0 and translateY(+20px)
+
+Ends at opacity 1 and translateY(0)
+
+
+2. Slide-up (Shop Now button)
+
+Duration: 0.7s
+
+Delay: 0.4s
+
+Scale: 0.8 → 1
+
+TranslateY: +40px → 0
+
+
+3. Background Zoom
+
+Subtle zoom-in effect
+
+Duration: 2s
+
+Scale: 1.0 → 1.05
+
+Ease-out
+
+
+4. Carousel Slide Transition
+
+Duration: 900ms
+
+Easing function:
+
+cubic-bezier(.68,-0.55,.27,1.55)
+
+(spring/overshoot effect)
+
+
+
+---
+
+Controls
+
+Prev and Next buttons
+
+Left and right sides, centered vertically
+
+Rounded button style
+
+Semi-transparent dark background
+
+White arrows
+
+
+
+---
+
+Auto Sliding
+
+Auto-advance every 5.5 seconds
+
+Infinite looping
+
+Smooth transition between all 5 slides
+
+
+
+---
+
+✅ Slide Content (5 Slides)
+
+Provide these EXACT example contents (the agent should replace them with placeholders if needed):
+
+
+---
+
+Slide 1 — Fashion
+
+Title: “Mega Fashion Sales”
+
+Subtitle: “Up to 70% discount”
+
+Description:
+“The best deals on trendy wears, shoes, bags & accessories. Limited time offer.”
+
+Image: Fashion sale banner
+
+
+
+---
+
+Slide 2 — Gadgets
+
+Title: “Tech Gadgets Deals”
+
+Subtitle: “Smartphones • Smartwatches • Accessories”
+
+Description:
+“Enjoy unbeatable prices on the latest devices with fast nationwide delivery.”
+
+Image: Gadgets promo
+
+
+
+---
+
+Slide 3 — Home Essentials
+
+Title: “Home Essentials”
+
+Subtitle: “Everything you need for comfort”
+
+Description:
+“Shop furniture, decorations, kitchen tools, lamps & more.”
+
+Image: Home essentials banner
+
+
+
+---
+
+Slide 4 — Beauty & Care
+
+Title: “Beauty & Self-Care”
+
+Subtitle: “Glow every day”
+
+Description:
+“Discover skincare, makeup, haircare & wellness products designed for you.”
+
+Image: Beauty products background
+
+
+
+---
+
+Slide 5 — Super Deals
+
+Title: “Super Deals Today”
+
+Subtitle: “Flash sales every hour”
+
+Description:
+“Grab limited-time discounts on top products while stocks last.”
+
+Image: Flash deals banner
+

@@ -1,0 +1,42 @@
+You are a senior full-stack developer. Integrate our existing dashboard (hosted at https://example.com) with a new storefront so that every order placed in the storefront is forwarded to the dashboard database and a receipt is saved. The dashboard UI is currently accessible only when a valid UI token is present in the query string (e.g., https://example.com/?Sh1123a). Implement the following:
+
+1. Create a secure POST API on the dashboard:
+   - Endpoint: POST /api/v1/orders/receive
+   - Auth: Bearer token (DASHBOARD_API_SECRET). Validate and return 201 on success.
+   - Accepts order JSON (order_id, customer, items array, subtotal, shipping, tax, total, payment_status, optional receipt.base64).
+   - Saves order to dashboard DB, saves receipt file if provided, returns receipt_url.
+
+2. On the storefront (backend):
+   - Implement /api/checkout/place-order route that:
+     - Validates checkout data,
+     - Generates unique order_id,
+     - Optionally generates server-side PDF receipt,
+     - Forwards order to dashboard endpoint using server-stored DASHBOARD_API_SECRET,
+     - Saves dashboard's response (receipt_url) and returns it to the customer.
+
+3. Database schema additions for orders, receipts, ui_tokens, api_secrets. Provide SQL migrations for MySQL.
+
+4. Implement token-based UI gating:
+   - Validate `?token=` or `/?Sh1123a` on dashboard root; create a server-side session upon successful token validation.
+   - Provide API to list/revoke tokens.
+
+5. Receipt generation:
+   - Implement server-side PDF generator (Node/pdfkit or PHP/dompdf).
+   - Save receipts into `public/receipts` with unique file names.
+
+6. Security:
+   - Store DASHBOARD_API_SECRET in env, not code.
+   - Hash secrets when storing to DB.
+   - Use HTTPS, validate inputs, and rate-limit endpoint.
+   - Add logging and retry policy for failed forwards.
+
+Deliverables:
+- Full file/folder structure
+- SQL migrations
+- Example environment variable file (.env.example)
+- Code for dashboard receiver (Node or PHP)
+- Code for storefront forwarding (Node or PHP)
+- Example frontend snippet to place order
+- Test instructions and cURL examples
+
+Make code modular, documented, production-ready, and include brief deployment steps.

@@ -1,0 +1,270 @@
+I want you to build the COMPLETE STOREFRONT + CUSTOMER ACCOUNT SYSTEM that integrates directly with the Node/Express Dashboard backend you helped me build earlier.
+This must NOT break the existing dashboard flow, but extend it perfectly.)
+
+1. BUILD A FULL STOREFRONT FRONTEND
+
+Create a responsive storefront UI (mobile + desktop) using the SAME header/footer design as the dashboard.
+
+Pages required:
+
+Home Page → /
+Hero, featured products, category links, CTA buttons.
+
+Products Page → /products
+Product grid (3–4 column desktop, list mobile), Add-to-Cart.
+
+Cart Page → /cart
+Edit quantities, remove items, show totals, proceed to checkout.
+
+Checkout Page → /checkout
+Show order summary.
+If customer not logged in → redirect to Login.
+
+Receipt Page → /receipt?id=ORDER_ID
+Show order receipt + “Download Receipt”.
+
+My Account Page → /user-account
+Profile details, phone, email, last seen, order history, logout.
+Auto-logout after 30 min inactivity.
+
+Frontend Requirements
+
+Fully responsive
+
+Smooth UI transitions
+
+Mobile-first layout
+
+Replit-ready static frontend
+
+All pages connected to backend API
+
+2. BUILD CUSTOMER ACCOUNT SYSTEM
+
+Customer account system must integrate with dashboard’s customer module.
+
+Sign-Up (Email + Phone only)
+
+Save email + phone
+
+Generate verification_token
+
+Send verification email
+
+User verifies via /verify?token=XXX
+
+After verification → customer automatically added to dashboard Customers
+
+Phone-Based Login (OTP System)
+
+Step 1:
+User enters phone → “Generate OTP”
+Backend:
+
+create 7-digit OTP
+
+expires in 10 mins
+
+send via email
+
+Step 2:
+User enters OTP → validate:
+
+correct
+
+not expired
+
+not used
+
+If valid:
+
+create login session
+
+redirect to /user-account
+
+Blocking System (Dashboard-Controlled)
+If the dashboard blocks a customer:
+
+disallow OTP requests
+
+show message: “Your account is blocked.”
+
+Auto-Logout
+
+If no activity for 30 minutes → logout and redirect to login
+
+Update last_seen in dashboard
+
+3. ORDER + RECEIPT SYSTEM
+Checkout endpoint
+
+POST /api/orders/create
+
+Input includes:
+
+cart items
+
+totals
+
+customer ID from session
+
+Backend must:
+
+create order
+
+generate unique receipt ID
+
+save order
+
+forward order into dashboard Orders database
+
+return receipt URL → /receipt?id=ORDER_ID
+
+Receipt Page
+
+Display:
+
+customer info
+
+order items
+
+subtotal + total
+
+date
+
+receipt ID
+
+Download receipt option
+
+Dashboard Sync
+
+Every order updates dashboard:
+
+total orders
+
+total spent
+
+last seen
+
+order row inserted
+
+4. BACKEND FILE STRUCTURE
+
+Create full Node/Express backend:
+
+/storefront-backend
+   /routes
+      customers.js
+      auth.js
+      otp.js
+      orders.js
+      receipts.js
+      session.js
+   /controllers
+      customersController.js
+      authController.js
+      otpController.js
+      ordersController.js
+      receiptsController.js
+   /models
+      Customer.js
+      OTP.js
+      Order.js
+      Session.js
+   /middlewares
+      authMiddleware.js
+      sessionActivityTracker.js
+   /utils
+      emailSender.js
+      otpGenerator.js
+      tokenGenerator.js
+      receiptGenerator.js
+   server.js
+
+Database Models
+
+customers
+
+id, email, phone, verified, verification_token, blocked
+
+total_orders, total_spent, last_seen, created_at
+
+customers_otp
+
+id, customer_id, otp_code, expires_at, used
+
+orders
+
+id, customer_id, items, subtotal, total, created_at
+
+sessions
+
+id, customer_id, last_activity, expires_at
+
+5. REQUIRED API ENDPOINTS
+CUSTOMER
+
+POST /api/customers/signup
+
+GET /api/customers/verify
+
+GET /api/customers/me
+
+AUTH / OTP
+
+POST /api/auth/request-otp
+
+POST /api/auth/verify-otp
+
+POST /api/auth/logout
+
+ORDERS
+
+POST /api/orders/create
+
+GET /api/orders/:id
+
+RECEIPTS
+
+GET /api/receipt/:id
+
+ADMIN / DASHBOARD SYNC
+
+POST /api/admin/block/:customerId
+
+POST /api/admin/unblock/:customerId
+
+6. DELIVERABLES
+A. Full storefront frontend
+
+All 6 pages
+Desktop + mobile
+Header/footer matching dashboard
+Functional cart, checkout, receipt, user account
+
+B. Complete Storefront Backend
+
+All controllers, routes, models
+OTP login
+Verification email
+Order + receipt system
+Dashboard sync
+
+C. Working Replit Deployment
+
+Must return:
+
+the storefront URL
+
+backend port
+
+all pages accessible
+
+checkout + receipt functioning
+
+login system working
+
+D. No placeholders. Everything must be real and functional.
+END OF FAST-MODE PROMPT
+
+(Begin building immediately.)

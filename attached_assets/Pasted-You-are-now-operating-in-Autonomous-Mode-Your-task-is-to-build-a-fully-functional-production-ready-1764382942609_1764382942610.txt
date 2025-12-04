@@ -1,0 +1,257 @@
+You are now operating in Autonomous Mode.
+Your task is to build a fully functional, production-ready eCommerce storefront + backend system, fully compatible with the existing Dashboard flow.
+
+You must:
+
+Create BOTH frontend and backend
+
+Integrate them fully
+
+Ensure all flows work end-to-end
+
+Follow the existing design system used for the Dashboard (header, footer, mobile & desktop views)
+
+Maintain clean file architecture
+
+Ensure everything runs locally and can be deployed
+
+✅ 1. FRONTEND STOREFRONT REQUIREMENTS
+
+Build the following pages:
+
+(A) Home Page
+
+Route: /
+File: index.html
+
+Features:
+
+Header + footer (same as Dashboard)
+
+Mobile + desktop versions
+
+Featured products grid
+
+Banner area
+
+Category section
+
+“View All” button → /products
+
+(B) Products Page
+
+Route: /products
+
+Features:
+
+Product list fetched from backend /api/products
+
+Filters (category, price)
+
+Search bar
+
+Pagination (if > 12 items)
+
+Product card component reused everywhere
+
+(C) Cart Page
+
+Route: /cart
+
+Features:
+
+Add/remove items
+
+Update quantity
+
+Mini-cart preview
+
+Cart totals
+
+Checkout button → /checkout
+
+(D) Checkout Page
+
+Route: /checkout
+
+Features:
+
+Guest checkout
+
+Logged-in user auto-fill (using token)
+
+Address form
+
+Payment method (COD for now)
+
+Submit order → POST /api/orders
+
+Redirect to receipt page
+
+(E) User Account Page
+
+Route: /user-account
+
+Features:
+
+Login + register + OTP verification
+
+View past orders
+
+Edit profile
+
+Logout
+
+Must use same UI system as Dashboard (mobile + desktop)
+
+(F) Order Receipt Page
+
+Route: /receipt?id=ORDER_ID
+
+Features:
+
+Order summary (fetched from /api/orders/:id)
+
+Items, price, delivery address, status
+
+Print button
+
+Transferrable and shareable link
+
+✅ 2. REUSABLE UI REQUIREMENTS
+
+Use the exact same components from existing Dashboard:
+
+Must include:
+
+Same header (mobile + desktop)
+
+Same footer (mobile + desktop)
+
+Same button style
+
+Same input style
+
+Same mobile layout behavior
+
+Same theme colors
+
+Responsive Requirements
+
+Mobile-first layout
+
+Tablet adaptive
+
+Desktop grid expansions
+
+✅ 3. BACKEND REQUIREMENTS
+
+Build a complete Node + Express backend with the following modules:
+
+(A) Auth System
+
+Login, Register
+
+OTP generation + verification
+
+Token authentication (JWT)
+
+User profile endpoints
+
+(B) Products Module
+
+Product model
+
+CRUD for dashboard
+
+Public GET for storefront
+
+(C) Orders Module
+
+Create order
+
+Get order by ID
+
+List orders per user
+
+Dashboard order visibility
+
+(D) Cart Sync
+
+Client-side storage
+
+Server-side storage for logged-in users
+
+(E) Database Setup
+
+Use MongoDB or PostgreSQL.
+Create clean schemas and migrations.
+
+✅ 4. FILE STRUCTURE REQUIRED
+Frontend
+/public
+   /store
+      index.html
+      products.html
+      cart.html
+      checkout.html
+      user-account.html
+      receipt.html
+      /assets
+         /css
+         /js
+         /images
+
+Backend
+/server
+   /controllers
+   /routes
+   /models
+   /middleware
+   /config
+   server.js
+
+✅ 5. FUNCTIONAL REQUIREMENTS
+Must include:
+
+Full auth flow
+
+Full order flow
+
+Product listing + filtering
+
+Cart functions
+
+Checkout + order creation
+
+Receipt generation
+
+Works both mobile/desktop
+
+Dashboard → Storefront data sync
+
+No broken routes
+
+Fully responsive
+
+Error handling everywhere
+
+✅ 6. FINAL TASK
+
+After building:
+
+Confirm that all pages load correctly
+
+Confirm backend endpoints all work
+
+Confirm dashboard/storefront sync
+
+Provide a downloadable ZIP:
+
+Fully working frontend
+
+Fully working backend
+
+Provide instructions for running locally
+
+Provide deployment instructions
