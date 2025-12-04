@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Switch, Route } from 'wouter';
+import { Switch, Route, Link, useLocation } from 'wouter';
 import { Home, ShoppingBag, ShoppingCart, User, LogIn } from 'lucide-react';
 import StorefrontHome from './storefront-pages/Home';
 import StorefrontProducts from './storefront-pages/Products';
@@ -15,6 +15,7 @@ import NotFound from './storefront-pages/NotFound';
 import { CurrencyProvider } from '../contexts/CurrencyContext';
 
 function MobileNav({ isLoggedIn }: { isLoggedIn: boolean }) {
+  const [location] = useLocation();
   const navItems = [
     { icon: Home, label: 'Home', href: '/storefront' },
     { icon: ShoppingBag, label: 'Shop', href: '/storefront/products' },
@@ -22,20 +23,27 @@ function MobileNav({ isLoggedIn }: { isLoggedIn: boolean }) {
     { icon: isLoggedIn ? User : LogIn, label: isLoggedIn ? 'Account' : 'Login', href: isLoggedIn ? '/storefront/account' : '/storefront/login' },
   ];
 
+  const isActive = (href: string) => {
+    if (href === '/storefront') return location === '/storefront' || location === '/';
+    return location.startsWith(href);
+  };
+
   return (
     <nav className="fixed bottom-0 inset-x-0 border-t border-border bg-white shadow-lg md:hidden z-50">
       <div className="flex items-center justify-around">
         {navItems.map(item => {
           const Icon = item.icon;
+          const active = isActive(item.href);
           return (
-            <a
+            <Link
               key={item.label}
               href={item.href}
-              className="flex-1 flex flex-col items-center justify-center py-4 hover:bg-muted transition text-foreground"
+              className={`flex-1 flex flex-col items-center justify-center py-4 transition ${active ? 'text-purple-600' : 'text-foreground'}`}
+              data-testid={`link-mobile-${item.label.toLowerCase()}`}
             >
               <Icon className="h-6 w-6" />
               <span className="text-xs mt-1 font-medium">{item.label}</span>
-            </a>
+            </Link>
           );
         })}
       </div>

@@ -72,17 +72,17 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
   };
 
   return (
-    <header className="border-b bg-white sticky top-0 z-40 h-[50px] md:h-[100px] flex items-center">
+    <header className="border-b bg-white sticky top-0 z-40 h-[65px] md:h-[108px] flex items-center">
       <div className="max-w-7xl mx-auto w-full px-4 flex items-center justify-between gap-4">
         <Link href="/storefront">
           <h1 
-            className="cursor-pointer animate-gradient-text bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 bg-[length:200%_auto] bg-clip-text text-transparent text-[24px] md:text-[60px] leading-none"
+            className="cursor-pointer animate-gradient-text bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 bg-[length:200%_auto] bg-clip-text text-transparent text-[40px] md:text-[80px] leading-none"
             style={{ fontFamily: "'Nexa Bold', 'Montserrat', sans-serif", fontWeight: 900 }}
           >SHOOBU</h1>
         </Link>
 
         {/* Desktop Search Bar */}
-        <div className="hidden md:flex flex-1 max-w-[468px] mx-4">
+        <div className="hidden md:flex flex-1 max-w-[70%] mx-4">
           <div className="relative w-full flex">
             <input
               type="text"
