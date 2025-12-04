@@ -1,6 +1,6 @@
 import { Link } from "wouter";
-import { ShoppingCart, User, Check, Search } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ShoppingCart, User, Check, Search, X } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 interface HeaderProps {
   isLoggedIn: boolean;
@@ -22,6 +22,9 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
   const [previousCartCount, setPreviousCartCount] = useState(0);
   const [cartPreview, setCartPreview] = useState<CartPreview | null>(null);
   const [showPreview, setShowPreview] = useState(false);
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
+  const [mobileSearchQuery, setMobileSearchQuery] = useState('');
+  const mobileSearchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (cartCount > previousCartCount) {
@@ -65,6 +68,28 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
     }
   }, [isLoggedIn, loginError]);
 
+  useEffect(() => {
+    if (showMobileSearch && mobileSearchInputRef.current) {
+      mobileSearchInputRef.current.focus();
+    }
+  }, [showMobileSearch]);
+
+  const handleMobileSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (mobileSearchQuery.trim()) {
+      window.location.href = `/storefront/products?search=${encodeURIComponent(mobileSearchQuery.trim())}`;
+      setShowMobileSearch(false);
+      setMobileSearchQuery('');
+    }
+  };
+
+  const toggleMobileSearch = () => {
+    setShowMobileSearch(!showMobileSearch);
+    if (showMobileSearch) {
+      setMobileSearchQuery('');
+    }
+  };
+
   const getContactIconColor = () => {
     if (contactIconColor === 'green') return 'text-lime-500';
     if (contactIconColor === 'red') return 'text-red-500';
@@ -72,7 +97,7 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
   };
 
   return (
-    <header className="border-b bg-white sticky top-0 z-40 h-[65px] md:h-[108px] flex items-center">
+    <header className="border-b bg-white sticky top-0 z-40 h-[65px] md:h-[108px] flex items-center relative">
       <div className="max-w-7xl mx-auto w-full px-4 flex items-center justify-between gap-4">
         <Link href="/storefront">
           <h1 
@@ -114,9 +139,17 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
         {/* Mobile Navigation */}
         <nav className="md:hidden flex items-center gap-6 h-[35px]">
         {/* Search Icon */}
-        <Link href="/storefront/search" data-testid="link-mobile-search">
-          <Search className="h-6 w-6" />
-        </Link>
+        <button 
+          onClick={toggleMobileSearch}
+          data-testid="button-mobile-search"
+          className="p-1"
+        >
+          {showMobileSearch ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Search className="h-6 w-6" />
+          )}
+        </button>
 
         {/* Cart Icon with Count and Preview */}
         <div className="relative">
@@ -161,6 +194,34 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
           <User className={`h-6 w-6 transition-colors ${getContactIconColor()}`} />
         </Link>
         </nav>
+      </div>
+
+      {/* Mobile Search Dropdown */}
+      <div 
+        className={`md:hidden absolute left-0 right-0 top-full bg-white border-b shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
+          showMobileSearch ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <form onSubmit={handleMobileSearch} className="p-3">
+          <div className="flex gap-2">
+            <input
+              ref={mobileSearchInputRef}
+              type="text"
+              value={mobileSearchQuery}
+              onChange={(e) => setMobileSearchQuery(e.target.value)}
+              placeholder="Search products..."
+              className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-purple-500 text-sm"
+              data-testid="input-mobile-search"
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 bg-purple-600 text-white rounded-full"
+              data-testid="button-mobile-search-submit"
+            >
+              <Search className="h-4 w-4" />
+            </button>
+          </div>
+        </form>
       </div>
     </header>
   );

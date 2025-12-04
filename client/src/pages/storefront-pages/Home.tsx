@@ -441,48 +441,48 @@ export default function StorefrontHome() {
             Discover our curated collection of the latest tech gadgets and accessories. Fast shipping, secure checkout, and 30-day returns guaranteed.
           </p>
         </div>
-        <div className="flex gap-4 justify-center pt-4">
-          <Button size="lg" className="px-8 text-base gap-2" style={{ height: '33px' }} onClick={() => window.location.href = '/storefront/products'}>
+        <div className="flex flex-wrap gap-4 justify-center pt-4">
+          <Button size="lg" className="h-11 px-8 text-base gap-2" onClick={() => window.location.href = '/storefront/products'}>
             Shop Now
             <ArrowRight className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="lg" className="h-12 px-8 text-base" onClick={() => window.location.href = '/storefront/login'}>
+          <Button variant="outline" size="lg" className="h-11 px-8 text-base" onClick={() => window.location.href = '/storefront/login'}>
             Create Account
           </Button>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="grid md:grid-cols-3 gap-6">
-        <Card className="p-8 border-0 shadow-sm hover:shadow-md transition">
-          <div className="space-y-4">
-            <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center">
-              <Truck className="h-6 w-6 text-purple-600" />
+      <section className="grid grid-cols-3 gap-2 md:gap-6">
+        <Card className="p-3 md:p-8 border-0 shadow-sm hover:shadow-md transition">
+          <div className="flex flex-col items-center text-center md:items-start md:text-left space-y-2 md:space-y-4">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-purple-100 flex items-center justify-center">
+              <Truck className="h-5 w-5 md:h-6 md:w-6 text-purple-600" />
             </div>
-            <h3 className="text-lg font-bold" style={{ fontFamily: 'Plus Jakarta Sans' }}>Express Shipping</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <h3 className="text-xs md:text-lg font-bold leading-tight" style={{ fontFamily: 'Plus Jakarta Sans' }}>Express Shipping</h3>
+            <p className="hidden md:block text-sm text-muted-foreground leading-relaxed">
               Free shipping on all orders over $50. Track your package in real-time.
             </p>
           </div>
         </Card>
-        <Card className="p-8 border-0 shadow-sm hover:shadow-md transition">
-          <div className="space-y-4">
-            <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
-              <Shield className="h-6 w-6 text-blue-600" />
+        <Card className="p-3 md:p-8 border-0 shadow-sm hover:shadow-md transition">
+          <div className="flex flex-col items-center text-center md:items-start md:text-left space-y-2 md:space-y-4">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-blue-100 flex items-center justify-center">
+              <Shield className="h-5 w-5 md:h-6 md:w-6 text-blue-600" />
             </div>
-            <h3 className="text-lg font-bold" style={{ fontFamily: 'Plus Jakarta Sans' }}>Secure Payment</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <h3 className="text-xs md:text-lg font-bold leading-tight" style={{ fontFamily: 'Plus Jakarta Sans' }}>Secure Payment</h3>
+            <p className="hidden md:block text-sm text-muted-foreground leading-relaxed">
               Your payment is 100% secure with industry-leading encryption.
             </p>
           </div>
         </Card>
-        <Card className="p-8 border-0 shadow-sm hover:shadow-md transition">
-          <div className="space-y-4">
-            <div className="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center">
-              <ShoppingBag className="h-6 w-6 text-green-600" />
+        <Card className="p-3 md:p-8 border-0 shadow-sm hover:shadow-md transition">
+          <div className="flex flex-col items-center text-center md:items-start md:text-left space-y-2 md:space-y-4">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-green-100 flex items-center justify-center">
+              <ShoppingBag className="h-5 w-5 md:h-6 md:w-6 text-green-600" />
             </div>
-            <h3 className="text-lg font-bold" style={{ fontFamily: 'Plus Jakarta Sans' }}>Easy Returns</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <h3 className="text-xs md:text-lg font-bold leading-tight" style={{ fontFamily: 'Plus Jakarta Sans' }}>Easy Returns</h3>
+            <p className="hidden md:block text-sm text-muted-foreground leading-relaxed">
               30-day money-back guarantee. No questions asked.
             </p>
           </div>
