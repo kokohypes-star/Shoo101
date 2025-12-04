@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Plus, Search, Star, ChevronDown, ShoppingCart, ChevronLeft, ChevronRight, Filter, ArrowUpDown } from 'lucide-react';
+import { Plus, Search, Star, ChevronDown, ShoppingCart, ChevronLeft, ChevronRight, Filter, ArrowUpDown, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 
 const allProducts = [
@@ -90,7 +90,7 @@ export default function StorefrontProducts() {
 
   // Pagination logic
   const isMobile = windowWidth < 768;
-  const productsPerPage = isMobile ? 20 : 40;
+  const productsPerPage = isMobile ? 18 : 40;
   const totalPages = Math.ceil(filtered.length / productsPerPage);
   const startIndex = (currentPage - 1) * productsPerPage;
   const displayedProducts = filtered.slice(startIndex, startIndex + productsPerPage);
@@ -115,7 +115,12 @@ export default function StorefrontProducts() {
     <div className="max-w-7xl mx-auto px-4 py-16 space-y-12">
       {/* Header */}
       <div className="space-y-4 text-center">
-        <h1 className="font-bold" style={{ fontFamily: 'Plus Jakarta Sans', fontSize: '1.500rem' }}>Shop Our Store</h1>
+        <h1 
+          className="font-bold inline-block px-6 bg-gray-100 hover:bg-gray-200 transition-all duration-300 cursor-default hover:shadow-md" 
+          style={{ fontFamily: 'Plus Jakarta Sans', fontSize: '1.500rem', height: '40px', lineHeight: '40px', borderRadius: '4px' }}
+        >
+          Shop Our Store
+        </h1>
       </div>
 
       {/* Filters Section */}
@@ -272,29 +277,122 @@ export default function StorefrontProducts() {
 
               {/* Mobile Pagination */}
               {isMobile && (
-                <div className="flex items-center justify-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                    disabled={currentPage === 1}
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </Button>
-                  
-                  <span className="px-3 py-1 rounded-lg bg-muted text-sm font-medium">
-                    {currentPage}
-                  </span>
+                <>
+                  <div className="flex items-center justify-center gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                      disabled={currentPage === 1}
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    
+                    <span className="px-3 py-1 rounded-lg bg-muted text-sm font-medium">
+                      {currentPage}
+                    </span>
 
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                    disabled={currentPage === totalPages}
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
-                </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                      disabled={currentPage === totalPages}
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+
+                  {/* Promotional Banners - Mobile Only (40% Right Column from Desktop) */}
+                  <div className="mt-8 space-y-4">
+                    <a
+                      href="/storefront/products?category=Home"
+                      className="block relative overflow-hidden bg-white border border-gray-200 hover:shadow-lg transition-shadow"
+                      style={{ height: '140px', borderRadius: '0.3rem' }}
+                    >
+                      <img
+                        src="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=400&h=300&fit=crop"
+                        alt="Precious Sustainably Stylish"
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/30" />
+                      <div className="absolute inset-0 flex flex-col justify-center px-4 py-4">
+                        <div className="max-w-xs">
+                          <h3
+                            className="text-base font-bold text-white line-clamp-2 leading-tight"
+                            style={{ fontFamily: 'Plus Jakarta Sans', marginBottom: '0.5rem' }}
+                          >
+                            Precious Sustainably Stylish
+                          </h3>
+                          <Button
+                            className="bg-white hover:bg-gray-100 text-black gap-2 h-8 px-4 text-xs"
+                            onClick={(e) => { e.preventDefault(); window.location.href = '/storefront/products'; }}
+                          >
+                            Shop Now
+                            <ArrowRight className="h-3 w-3" />
+                          </Button>
+                        </div>
+                      </div>
+                    </a>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <a
+                        href="/storefront/products?category=Audio"
+                        className="block relative overflow-hidden bg-white border border-gray-200 hover:shadow-lg transition-shadow"
+                        style={{ height: '120px', borderRadius: '0.3rem' }}
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop"
+                          alt="Sound Innovation"
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/30" />
+                        <div className="absolute inset-0 flex flex-col justify-center px-3 py-3">
+                          <h3
+                            className="text-sm font-bold text-white line-clamp-1"
+                            style={{ fontFamily: 'Plus Jakarta Sans', marginBottom: '0.25rem' }}
+                          >
+                            Audio Collection
+                          </h3>
+                          <Button
+                            className="bg-white hover:bg-gray-100 text-black gap-1 h-6 px-3 text-xs w-fit"
+                            onClick={(e) => { e.preventDefault(); window.location.href = '/storefront/products?category=Audio'; }}
+                          >
+                            Shop
+                            <ArrowRight className="h-3 w-3" />
+                          </Button>
+                        </div>
+                      </a>
+
+                      <a
+                        href="/storefront/products?category=Wearables"
+                        className="block relative overflow-hidden bg-white border border-gray-200 hover:shadow-lg transition-shadow"
+                        style={{ height: '120px', borderRadius: '0.3rem' }}
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop"
+                          alt="Wearables Collection"
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/30" />
+                        <div className="absolute inset-0 flex flex-col justify-center px-3 py-3">
+                          <h3
+                            className="text-sm font-bold text-white line-clamp-1"
+                            style={{ fontFamily: 'Plus Jakarta Sans', marginBottom: '0.25rem' }}
+                          >
+                            Wearables
+                          </h3>
+                          <Button
+                            className="bg-white hover:bg-gray-100 text-black gap-1 h-6 px-3 text-xs w-fit"
+                            onClick={(e) => { e.preventDefault(); window.location.href = '/storefront/products?category=Wearables'; }}
+                          >
+                            Shop
+                            <ArrowRight className="h-3 w-3" />
+                          </Button>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </>
               )}
 
               {/* Desktop Pagination */}

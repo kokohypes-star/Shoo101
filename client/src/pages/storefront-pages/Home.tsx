@@ -423,18 +423,6 @@ export default function StorefrontHome() {
             );
           })}
           </div>
-          <div className="flex justify-center pt-8">
-            <Button 
-              size="icon"
-              variant="outline"
-              className="h-10 w-10 rounded-full"
-              onClick={() => window.location.href = '/storefront/products'}
-              data-testid="button-sort-featured"
-              title="View all products with sorting options"
-            >
-              <ArrowUpDown className="h-5 w-5" />
-            </Button>
-          </div>
         </div>
       </section>
 

@@ -72,23 +72,24 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
   };
 
   return (
-    <header className="border-b bg-white px-6 py-4 flex items-center justify-between sticky top-0 z-40">
-      <Link href="/storefront">
-        <h1 className="font-bold text-xl cursor-pointer">SHOOBU STORE</h1>
-      </Link>
+    <header className="border-b bg-white py-4 sticky top-0 z-40">
+      <div className="max-w-7xl mx-auto w-full px-4 flex items-center justify-between">
+        <Link href="/storefront">
+          <h1 className="font-bold text-xl cursor-pointer">SHOOBU STORE</h1>
+        </Link>
 
-      {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-6">
-        <Link href="/storefront/cart">Cart</Link>
-        {isLoggedIn ? (
-          <Link href="/storefront/account">Account</Link>
-        ) : (
-          <Link href="/storefront/login">Login</Link>
-        )}
-      </nav>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-6">
+          <Link href="/storefront/cart">Cart</Link>
+          {isLoggedIn ? (
+            <Link href="/storefront/account">Account</Link>
+          ) : (
+            <Link href="/storefront/login">Login</Link>
+          )}
+        </nav>
 
-      {/* Mobile Navigation */}
-      <nav className="md:hidden flex items-center gap-4">
+        {/* Mobile Navigation */}
+        <nav className="md:hidden flex items-center gap-4">
         {/* Cart Icon with Count and Preview */}
         <div className="relative">
           <Link href="/storefront/cart" className="relative flex items-center">
@@ -131,7 +132,8 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
         <Link href={isLoggedIn ? '/storefront/account' : '/storefront/login'}>
           <User className={`h-6 w-6 transition-colors ${getContactIconColor()}`} />
         </Link>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 }
