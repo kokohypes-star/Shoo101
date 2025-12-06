@@ -30,7 +30,7 @@ export default function Cart() {
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   return (
-    <div className="container mx-auto px-6 py-10">
+    <div className="w-full px-6 py-10 md:container md:mx-auto">
       <h2 className="text-3xl font-semibold mb-6">Your Cart</h2>
 
       {cart.length < 1 ? (

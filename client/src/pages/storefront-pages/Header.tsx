@@ -167,13 +167,6 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
           {showPreview && cartPreview && (
             <div className="absolute right-0 top-12 w-[150px] h-full bg-white border border-border rounded-lg shadow-lg p-[4px] z-50 tooltip-flutter">
               <div className="flex items-center gap-[2.8px]">
-                <div className="w-12 h-12 rounded-md overflow-hidden bg-muted flex-shrink-0">
-                  <img
-                    src={cartPreview.image}
-                    alt={cartPreview.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
                 <div className="flex-1 min-w-0 text-left">
                   <p className="text-[0.4rem] text-muted-foreground font-medium mb-[2px]">Added to cart</p>
                   <h4 className="text-[0.65rem] font-semibold line-clamp-2">{cartPreview.name}</h4>

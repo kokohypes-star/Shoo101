@@ -49,7 +49,7 @@ export default function Checkout({ customer }: CheckoutProps) {
   };
 
   return (
-    <div className="container mx-auto px-6 py-10">
+    <div className="w-full px-6 py-10 md:container md:mx-auto">
       <h2 className="text-3xl font-semibold mb-6">Checkout</h2>
 
       <div className="border rounded p-4">

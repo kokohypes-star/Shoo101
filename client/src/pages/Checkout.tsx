@@ -56,7 +56,7 @@ export default function Checkout({ customer }: CheckoutProps) {
     return <p className="p-6 text-red-500">You must be logged in.</p>;
 
   return (
-    <div className="container mx-auto px-6 py-10">
+    <div className="w-full px-6 py-10 md:container md:mx-auto">
       <h2 className="text-3xl font-semibold mb-6">Checkout</h2>
 
       <div className="border p-4 rounded">

@@ -49,7 +49,7 @@ export default function StorefrontCart() {
   const finalTotal = total + shipping + tax;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16">
+    <div className="w-full px-4 py-16 md:max-w-7xl md:mx-auto">
       {cart.length > 0 ? (
         <div className="space-y-8">
           {/* Header */}
