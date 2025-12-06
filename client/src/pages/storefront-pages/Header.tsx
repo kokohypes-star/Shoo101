@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ShoppingCart, User, Check, Search, X } from "lucide-react";
+import { ShoppingCart, User, Check, Search, X, Plus } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 interface HeaderProps {
@@ -165,12 +165,10 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
 
           {/* Cart Preview Tooltip */}
           {showPreview && cartPreview && (
-            <div className="absolute right-0 top-12 w-[150px] h-full bg-white border border-border rounded-lg shadow-lg p-[4px] z-50 tooltip-flutter">
-              <div className="flex items-center gap-[2.8px]">
-                <div className="flex-1 min-w-0 text-left">
-                  <p className="text-[0.4rem] text-muted-foreground font-medium mb-[2px]">Added to cart</p>
-                  <h4 className="text-[0.65rem] font-semibold line-clamp-2">{cartPreview.name}</h4>
-                </div>
+            <div className="fixed left-0 right-0 top-[65px] w-full bg-white border-b border-border shadow-lg p-2 z-50 tooltip-flutter md:hidden">
+              <div className="flex items-center gap-2">
+                <Plus className="h-4 w-4 text-purple-600 flex-shrink-0" />
+                <h4 className="text-sm font-semibold flex-1 min-w-0 truncate">{cartPreview.name}</h4>
                 <button
                   onClick={() => setShowPreview(false)}
                   className="text-muted-foreground hover:text-foreground transition flex-shrink-0"
