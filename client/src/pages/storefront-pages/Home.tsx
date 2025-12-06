@@ -122,6 +122,7 @@ export default function StorefrontHome() {
     }
     localStorage.setItem('sf_cart', JSON.stringify(cart));
     window.dispatchEvent(new Event('storage'));
+    window.dispatchEvent(new CustomEvent('cartItemAdded', { detail: product }));
     toast.success(`${product.name} added to cart!`, {
       duration: 2000,
       position: 'bottom-right',

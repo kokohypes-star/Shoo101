@@ -35,16 +35,15 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
     setPreviousCartCount(cartCount);
   }, [cartCount, previousCartCount]);
 
-  // Listen for cart changes and show preview of last added item
+  // Listen for cart item added event and show preview of added item
   useEffect(() => {
-    const handleStorageChange = () => {
-      const cart = JSON.parse(localStorage.getItem('sf_cart') || '[]');
-      if (cart.length > 0) {
-        const lastItem = cart[cart.length - 1];
+    const handleCartItemAdded = (event: CustomEvent) => {
+      const product = event.detail;
+      if (product) {
         setCartPreview({
-          name: lastItem.name,
-          price: lastItem.price,
-          image: lastItem.image,
+          name: product.name,
+          price: product.price,
+          image: product.image,
         });
         setShowPreview(true);
         const timer = setTimeout(() => setShowPreview(false), 3500);
@@ -52,8 +51,8 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
       }
     };
 
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
+    window.addEventListener('cartItemAdded', handleCartItemAdded as EventListener);
+    return () => window.removeEventListener('cartItemAdded', handleCartItemAdded as EventListener);
   }, []);
 
   useEffect(() => {

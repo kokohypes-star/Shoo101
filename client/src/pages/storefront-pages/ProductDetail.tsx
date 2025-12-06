@@ -44,6 +44,7 @@ export default function ProductDetail() {
     
     localStorage.setItem('sf_cart', JSON.stringify(cart));
     window.dispatchEvent(new Event('storage'));
+    window.dispatchEvent(new CustomEvent('cartItemAdded', { detail: product }));
     toast.success(`${qty} x ${product.name} added to cart!`);
   };
 
