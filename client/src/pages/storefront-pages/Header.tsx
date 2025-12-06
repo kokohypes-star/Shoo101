@@ -165,16 +165,10 @@ export default function StorefrontHeader({ isLoggedIn, onLogout, cartCount = 0, 
 
           {/* Cart Preview Tooltip */}
           {showPreview && cartPreview && (
-            <div className="fixed left-0 right-0 top-[65px] w-full bg-white border-b border-border shadow-lg p-2 z-50 tooltip-flutter md:hidden">
+            <div className="absolute right-0 top-12 w-auto max-w-[200px] bg-white border border-border rounded-lg shadow-lg px-3 py-2 z-50 tooltip-flutter md:hidden">
               <div className="flex items-center gap-2">
                 <Plus className="h-4 w-4 text-purple-600 flex-shrink-0" />
-                <h4 className="text-sm font-semibold flex-1 min-w-0 truncate">{cartPreview.name}</h4>
-                <button
-                  onClick={() => setShowPreview(false)}
-                  className="text-muted-foreground hover:text-foreground transition flex-shrink-0"
-                >
-                  <Check className="h-5 w-5" />
-                </button>
+                <h4 className="text-xs font-semibold min-w-0 line-clamp-2">{cartPreview.name}</h4>
               </div>
             </div>
           )}
