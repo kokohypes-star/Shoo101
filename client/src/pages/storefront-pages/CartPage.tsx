@@ -62,45 +62,51 @@ export default function StorefrontCart() {
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-4">
               {cart.map(item => (
-                <Card key={item.id} className="p-6 border-0 shadow-sm hover:shadow-md transition">
-                  <div className="flex gap-6">
-                    <div className="w-24 h-24 rounded-lg overflow-hidden bg-muted flex-shrink-0">
+                <Card key={item.id} className="p-4 md:p-6 border-0 shadow-sm hover:shadow-md transition">
+                  <div className="flex gap-4 md:gap-6">
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden bg-muted flex-shrink-0">
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-lg mb-1">{item.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-3">{item.category}</p>
-                      <p className="text-2xl font-bold text-purple-600">₦{item.price.toLocaleString()}</p>
-                    </div>
-                    <div className="flex flex-col gap-4 items-end">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => removeItem(item.id)}
-                        className="h-8 w-8"
-                      >
-                        <Trash2 className="h-4 w-4 text-destructive" />
-                      </Button>
-                      <div className="flex items-center gap-3 bg-muted px-3 py-2 rounded-lg">
+                    <div className="flex-1 min-w-0 flex flex-col">
+                      <div className="flex justify-between items-start gap-2">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="font-semibold text-base md:text-lg mb-1 truncate">{item.name}</h3>
+                          <p className="text-sm text-muted-foreground mb-2">{item.category}</p>
+                          <p className="text-lg md:text-2xl font-bold text-purple-600">₦{item.price.toLocaleString()}</p>
+                        </div>
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-8 w-8"
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() => removeItem(item.id)}
+                          data-testid={`button-remove-${item.id}`}
                         >
-                          <Minus className="h-4 w-4" />
-                        </Button>
-                        <span className="w-6 text-center font-semibold">{item.quantity}</span>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-8 w-8"
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        >
-                          <Plus className="h-4 w-4" />
+                          <Trash2 className="h-4 w-4 text-destructive" />
                         </Button>
                       </div>
-                      <p className="text-lg font-bold">₦{(item.price * item.quantity).toLocaleString()}</p>
+                      <div className="flex items-center justify-between mt-auto pt-3 gap-2 flex-wrap">
+                        <div className="flex items-center gap-2 md:gap-3 bg-muted px-2 md:px-3 py-1.5 md:py-2 rounded-lg">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-7 w-7 md:h-8 md:w-8"
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            data-testid={`button-decrease-${item.id}`}
+                          >
+                            <Minus className="h-4 w-4" />
+                          </Button>
+                          <span className="w-6 text-center font-semibold">{item.quantity}</span>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-7 w-7 md:h-8 md:w-8"
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            data-testid={`button-increase-${item.id}`}
+                          >
+                            <Plus className="h-4 w-4" />
+                          </Button>
+                        </div>
+                        <p className="text-base md:text-lg font-bold">₦{(item.price * item.quantity).toLocaleString()}</p>
+                      </div>
                     </div>
                   </div>
                 </Card>
